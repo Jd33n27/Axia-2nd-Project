@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -22,12 +23,12 @@ const Contact = () => {
             Create an account and explore the dashboard in minutes
           </p>
         </div>
-        <a
-          href="/signup"
+        <Link
+          to="/Signup"
           className="mt-6 w-full inline-flex items-center justify-center bg-indigo-600 py-3 px-5 rounded-xl text-white text-center font-medium hover:bg-indigo-700 md:w-xs"
         >
           Contact Us
-        </a>
+        </Link>
       </div>
     </section>
   );
