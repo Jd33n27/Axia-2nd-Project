@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-BrightYellow: #fff5e3;
+  --color-BrightPurple: #EBEBFF;
+}
