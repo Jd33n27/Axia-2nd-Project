@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -10,15 +11,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* <!-- Logo --> */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 font-semibold md:text-xl"
-          >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-white">
-              R
-            </span>
-            <span className="text-slate-800">React Learn</span>
-          </Link>
+          <Logo />
 
           {/* <!-- Nav --> */}
           <nav className="hidden items-center gap-8 text-sm md:flex md:text-lg">

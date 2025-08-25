@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
@@ -6,12 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start justify-evenly gap-6 md:flex-row md:items-center">
           <div className="flex flex-col max-w-xs">
-            <a href="#" className="flex items-center gap-2 font-semibold">
-              <span className="inline-flex items-center justify-center size-8 rounded-xl bg-indigo-600 text-white">
-                R
-              </span>
-              <span className="text-slate-800">React Learn</span>
-            </a>
+            <Logo />
             <div className="flex flex-col space-y-3 my-2">
               <p className="flex items-center gap-6 text-slate-600 text-wrap">
                 A firm that is concentrated on equipping African youths with the
@@ -69,6 +65,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
+
           {/* Contact Company */}
           <nav className="flex flex-col text-start gap-1 text-sm text-slate-600">
             <h2 className="font-bold text-xl"> Company</h2>

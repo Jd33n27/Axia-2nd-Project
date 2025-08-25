@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const AuthForm = ({
   children,
@@ -12,14 +13,9 @@ const AuthForm = ({
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-md mx-auto px-4 py-12">
-        <Link to="/" className="flex items-center gap-2 mb-8">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-semibold">
-            R
-          </span>
-          <span className="font-semibold">React Learn</span>
-        </Link>
+        <Logo />
 
-        <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+        <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm mt-5">
           <h1 className="text-xl font-semibold">{formTitle}</h1>
           <p className="text-sm text-slate-600 mt-1">{formWelcomeText}</p>
 
