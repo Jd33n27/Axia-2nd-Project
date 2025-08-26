@@ -1,8 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import Card from "../components/Card";
+import Card from "./Card";
+import { useState, useEffect } from "react";
 
-const DashboardPage = () => {
+const TextApi = () => {
   const [book, setBook] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,6 @@ const DashboardPage = () => {
 
     fetchBooks();
   }, []);
-
   return (
     <section>
       <Card>
@@ -53,4 +52,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default TextApi;
