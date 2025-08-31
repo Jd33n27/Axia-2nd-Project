@@ -1,6 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  LiaBookSolid,
+  LiaClipboardListSolid,
+  LiaPencilRulerSolid,
+} from "react-icons/lia";
+import { IoCloseOutline } from "react-icons/io5";
 import Logo from "./Logo";
 
 const Navbar = () => {
@@ -41,19 +47,32 @@ const Navbar = () => {
           id="mobileMenu"
           className={`${
             open ? "" : "hidden"
-          } md:hidden border-t rounded-xl border-slate-200 bg-white fixed flex-col items-center self-center mx-auto top-14 left-6 right-4 space-y-4`}
+          } border-t rounded-xl border-slate-200 h-dvh shadow-sm bg-white fixed flex-col items-center self-center mx-auto top-0 left-0 right-[40%] space-y-4`}
         >
-          <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
-            <Link to="#features" className="py-2">
+          {/* Logo */}
+          <Logo className="inline-flex m-6" />
+          <button
+            className="inline-flex items-center justify-center h-10 w-10 rounded-xl border-slate-200 fixed top-[40%] left-[50%] hover:bg-red-400/70"
+            onClick={() => setOpen(!open)}
+          >
+            <IoCloseOutline className="inline-flex size-7" />
+          </button>
+
+          {/*  */}
+          <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col space-y-4 text-sm">
+            <Link to="/Dashboard" className="py-2">
+              <LiaBookSolid className="inline-flex size-7 mx-2 items-center" />
               DashBoard
             </Link>
-            <Link to="#about" className="py-2">
+            <Link to="/ClassPage" className="py-2">
+              <LiaPencilRulerSolid className="inline-flex size-7 mx-2 items-center" />
               Classes
             </Link>
-            <Link to="#contact" className="py-2">
+            <Link to="/AssignPAge" className="py-2">
+              <LiaClipboardListSolid className="inline-flex size-7 mx-2 items-center" />{" "}
               Assignments
             </Link>
-          </div>
+          </nav>
         </div>
       </div>
     </header>

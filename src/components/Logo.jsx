@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Logo = () => {
+const Logo = ({ className }) => {
   return (
-    <Link to="/" className="flex items-center gap-2 font-semibold">
+    <Link
+      to="/"
+      className={`flex items-center gap-2 font-semibold ${className}`}
+    >
       <span className="inline-flex items-center justify-center size-8 rounded-xl bg-indigo-600 text-white">
         R
       </span>

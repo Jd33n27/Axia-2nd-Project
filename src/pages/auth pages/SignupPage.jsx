@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AuthForm from "../../components/AuthForm";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = ({ onSignupSuccess }) => {
   const [email, setEmail] = useState("");
@@ -7,28 +8,26 @@ const SignupPage = ({ onSignupSuccess }) => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const url = "https://reqres.in/api/register";
+  const url = "https://reqres.in/api/users/register";
+
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setMessage("");
-
-    const emailToSend = "sydney@fife";
 
     try {
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-api-key": "reqres-free-v1",
         },
         body: JSON.stringify({
-          email: emailToSend,
+          username: full_name,
           password: password,
         }),
       });
-      console.log(email, password);
-      console.log("Response status:", response.status);
-      console.log("Response body:", result);
 
       const result = await response.json();
 
@@ -36,15 +35,18 @@ const SignupPage = ({ onSignupSuccess }) => {
         const userData = {
           full_name,
           email,
-          token: result.token,
+          password,
+          token: result.id,
         };
-        console.log(result);
+
         onSignupSuccess(userData);
+        navigate(`/login`);
       } else {
         setMessage(`Signup failed: ${result.error}`);
       }
     } catch (error) {
       setMessage(`An error occurred. Please try again.`);
+      console.log(error);
     }
   };
 
