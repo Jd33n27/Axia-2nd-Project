@@ -11,22 +11,24 @@ const LoginPage = () => {
       authCheckLinkText="New here? "
       authCheckLinkPath="/signup"
     >
-      <label className="block">
+      <label for="email" className="block">
         <span className="text-sm text-slate-700">Email</span>
         <input
           type="email"
+          id="email"
           required
           className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           placeholder="you@example.com"
         />
       </label>
-      <label className="block">
+      <label for="password" className="block">
         <span className="text-sm text-slate-700">Password</span>
         <input
           type="password"
+          id="password"
           required
           className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          placeholder="••••••••"
+          placeholder="Password123"
         />
       </label>
       <div className="flex items-center justify-between text-sm">

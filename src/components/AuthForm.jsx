@@ -19,9 +19,7 @@ const AuthForm = ({
           <h1 className="text-xl font-semibold">{formTitle}</h1>
           <p className="text-sm text-slate-600 mt-1">{formWelcomeText}</p>
 
-          <form className="mt-6 space-y-4" id="signupForm">
-            {children}
-          </form>
+          {children}
 
           <p className="text-sm text-slate-600 mt-6">
             {authCheckLinkText}

@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 const Footer = () => {
   return (
-    <section className="border-t border-slate-200 bg-indigo-300 rounded-2xl max-w-[630px] lg:max-w-[1440px] md:max-w-3xl mx-auto">
+    <section className="border-t border-slate-200 bg-indigo-300 rounded-2xl mb-10 container mx-auto">
       <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start justify-evenly gap-6 md:flex-row md:items-center">
           <div className="flex flex-col max-w-xs">
