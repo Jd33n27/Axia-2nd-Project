@@ -8,8 +8,9 @@ import {
 } from "react-icons/lia";
 import { IoCloseOutline } from "react-icons/io5";
 import Logo from "./Logo";
+import ProfileWidget from "./ProfileWidget";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -38,8 +39,13 @@ const Navbar = () => {
             </svg>
           </button>
 
-          {/* Logo */}
-          <Logo />
+          <div className="flex items-center justify-around w-full">
+            {/* Logo */}
+            <Logo className={"md:hidden"} />
+            <ProfileWidget user={user} className={"fixed top-0 left-[70%]"} />
+          </div>
+
+          {/* profile Icon */}
         </div>
 
         {/* <!-- Mobile Drawer --> */}
@@ -58,7 +64,7 @@ const Navbar = () => {
             <IoCloseOutline className="inline-flex size-7" />
           </button>
 
-          {/*  */}
+          {/*Mobile Menu*/}
           <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col space-y-4 text-sm">
             <Link to="/Dashboard" className="py-2">
               <LiaBookSolid className="inline-flex size-7 mx-2 items-center" />
