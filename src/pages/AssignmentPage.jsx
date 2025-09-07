@@ -99,41 +99,14 @@ const AssignmentsCard = ({ assignments }) => {
 };
 
 // assignments Page
-const AssignmentPage = ({ user }) => {
-  const assignment = [
-    {
-      id: 1,
-      title: "Database assignments",
-      course: "CSC 208",
-      dueDate: "2025-09-10",
-      status: "pending",
-      description: "Complete normalization exercises up to 3NF.",
-    },
-    {
-      id: 2,
-      title: "Web Project",
-      course: "CSC 210",
-      dueDate: "2025-09-05",
-      status: "submitted",
-      description: "Build a responsive portfolio website.",
-    },
-    {
-      id: 3,
-      title: "AI Essay",
-      course: "CSC 315",
-      dueDate: "2025-08-28",
-      status: "pending", // this one will auto-mark as overdue
-      description: "Write a 2000-word essay on AI ethics.",
-    },
-  ];
-
+const AssignmentPage = ({ user, assignments = [] }) => {
   return (
     <section>
       <Sidebar />
       <div className="md:float-right md:w-[80%]">
         <Navbar user={user} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {assignment.map((a) => (
+          {assignments.map((a) => (
             <AssignmentsCard key={a.id} assignments={a} />
           ))}
         </div>

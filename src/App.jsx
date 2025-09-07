@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, useNavigate, Route } from "react-router-dom";
 import "./index.css";
 import HomePage from "./pages/HomePage";
@@ -13,6 +13,31 @@ import CoursesPage from "./pages/CoursesPage";
 import ResourcesPage from "./pages/ResourcesPage";
 
 const AppContent = () => {
+  const [assignments, setAssignments] = useState([]);
+
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        const response = await fetch("https://dummyjson.com/todos");
+        const data = await response.json();
+
+        const transformedTodos = data.todos.slice(0, 10).map((todo, index) => ({
+          id: todo.id,
+          title: todo.todo,
+          description: todo.todo,
+          course: "General Course",
+          dueDate: new Date(2025, 8, 1 + index).toISOString().split("T")[0],
+          status: todo.completed ? "completed" : "pending",
+        }));
+
+        setAssignments(transformedTodos);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchAssignments();
+  }, []);
   // Load users from localStorage on app start
   const [users, setUsers] = useState(() => {
     const savedUsers = localStorage.getItem("allUsers");
@@ -65,7 +90,14 @@ const AppContent = () => {
       {/* Dashboard Page */}
       <Route
         path="/Dashboard"
-        element={<DashboardPage user={currentUser} onLogout={handleLogout} />}
+        element={
+          <DashboardPage
+            user={currentUser}
+            onLogout={handleLogout}
+            assignments={assignments}
+            setAssignments={setAssignments}
+          />
+        }
       />
 
       {/* Login Page */}
@@ -86,7 +118,13 @@ const AppContent = () => {
       {/* assignments Page */}
       <Route
         path="/assignment"
-        element={<AssignmentPage user={currentUser} />}
+        element={
+          <AssignmentPage
+            user={currentUser}
+            assignments={assignments}
+            setAssignments={setAssignments}
+          />
+        }
       />
 
       {/* Profile Page */}

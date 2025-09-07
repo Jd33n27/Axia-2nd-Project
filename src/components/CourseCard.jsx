@@ -10,7 +10,7 @@ const CourseCard = ({ course }) => {
   if (!course) return null;
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-      <div className="relative h-48 bg-gradient-to-br from-purple-500 to-indigo-600">
+      <div className="relative h-48 bg-indigo-600">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="absolute bottom-4 left-4 text-white">
           <h3 className="text-xl font-bold">
@@ -64,14 +64,14 @@ const CourseCard = ({ course }) => {
           </div>
           <div className="w-full h-2 bg-gray-200 rounded-full">
             <div
-              className="h-full bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"
+              className="h-full bg-indigo-600 rounded-full"
               style={{ width: `${course?.progress || 0}%` }}
             ></div>
           </div>
         </div>
 
         <div className="flex gap-3">
-          <button className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 px-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="flex-1 bg-indigo-600 text-white py-2 px-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
             <LiaPlaySolid />
             {(course?.progress || 0) > 0 ? "Continue" : "Start Course"}
           </button>

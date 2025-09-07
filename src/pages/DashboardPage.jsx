@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
 import Progressbar from "../components/Progressbar";
 import Sidebar from "../components/Sidebar";
 import Calendar from "../components/Calendar";
 
-const DashboardPage = ({ user, onLogout }) => {
-  // Safety check
+const DashboardPage = ({ user, assignments = [] }) => {
   if (!user) {
     return (
       <>
@@ -19,11 +18,20 @@ const DashboardPage = ({ user, onLogout }) => {
     );
   }
 
+  // Calculate assignment progress from the actual data
+  const completedAssignments = assignments.filter(
+    (a) => a.status === "completed"
+  ).length;
+  const totalAssignments = assignments.length;
+
   // Mock progress data - replace with actual user data
   const progressData = {
-    enrolledCourses: { completed: 6, total: 8 },
-    overallGrade: { completed: 550, total: 800 }, // Grade as percentage
-    completedassignment: { completed: 12, total: 15 },
+    enrolledCourses: { completed: 6, total: 10 },
+    overallGrade: { completed: 550, total: 800 },
+    completedassignment: {
+      completed: completedAssignments,
+      total: totalAssignments,
+    },
   };
 
   return (
@@ -59,7 +67,7 @@ const DashboardPage = ({ user, onLogout }) => {
                     overall={progressData.overallGrade.total}
                   />
                   <Progressbar
-                    progressTitle="Completed assignment"
+                    progressTitle="Completed Assignment"
                     progressDigit={progressData.completedassignment.completed}
                     overall={progressData.completedassignment.total}
                   />
@@ -79,27 +87,29 @@ const DashboardPage = ({ user, onLogout }) => {
               <Card>
                 <h3 className="text-xl font-semibold mb-4">Recent Tasks</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <h4 className="font-medium">Math assignments</h4>
-                    <p className="text-sm text-gray-600">Due: Sep 8, 2025</p>
-                    <span className="inline-block mt-2 px-2 py-1 text-xs bg-red-100 text-red-800 rounded">
-                      Pending
-                    </span>
-                  </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <h4 className="font-medium">Science Quiz</h4>
-                    <p className="text-sm text-gray-600">Due: Sep 12, 2025</p>
-                    <span className="inline-block mt-2 px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">
-                      In Progress
-                    </span>
-                  </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <h4 className="font-medium">History Essay</h4>
-                    <p className="text-sm text-gray-600">Completed</p>
-                    <span className="inline-block mt-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded">
-                      Completed
-                    </span>
-                  </div>
+                  {assignments.slice(0, 3).map((assignment) => (
+                    <div
+                      key={assignment.id}
+                      className="p-3 bg-gray-50 rounded-lg"
+                    >
+                      <h4 className="font-medium">{assignment.title}</h4>
+                      <p className="text-sm text-gray-600">
+                        Due: {new Date(assignment.dueDate).toLocaleDateString()}
+                      </p>
+                      <span
+                        className={`inline-block mt-2 px-2 py-1 text-xs rounded ${
+                          assignment.status === "completed"
+                            ? "bg-green-100 text-green-800"
+                            : assignment.status === "pending"
+                            ? "bg-red-100 text-red-800"
+                            : "bg-yellow-100 text-yellow-800"
+                        }`}
+                      >
+                        {assignment.status.charAt(0).toUpperCase() +
+                          assignment.status.slice(1)}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </Card>
             </div>

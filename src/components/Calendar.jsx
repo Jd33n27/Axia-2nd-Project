@@ -9,9 +9,9 @@ const Calendar = () => {
 
   // Mock upcoming events
   const upcomingEvents = [
-    { date: "2025-09-08", title: "Math assignments Due", type: "assignments" },
-    { date: "2025-09-12", title: "Science Quiz", type: "quiz" },
-    { date: "2025-09-15", title: "History Project", type: "project" },
+    { date: "2025-09-08", title: "Software engineering", type: "assignments" },
+    { date: "2025-09-12", title: "C++", type: "quiz" },
+    { date: "2025-09-15", title: "Information systems", type: "project" },
   ];
 
   return (
@@ -69,8 +69,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-
-// // Simple Calendar Component
-// const Calendar = () => {
-//   const today = new Date();
-// };

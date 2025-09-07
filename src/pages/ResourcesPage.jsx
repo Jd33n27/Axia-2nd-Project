@@ -39,14 +39,14 @@ const BookCard = ({ book }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button className="bg-white text-purple-600 p-2 rounded-full shadow-lg hover:bg-purple-600 hover:text-white transition-colors">
+          <button className="bg-white text-indigo-600 p-2 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition-colors">
             <LiaExternalLinkAltSolid className="text-lg" />
           </button>
         </div>
       </div>
 
       <div className="p-5">
-        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-indigo-600 transition-colors">
           {book.title}
         </h3>
 
@@ -73,7 +73,7 @@ const BookCard = ({ book }) => {
             book.subject.slice(0, 3).map((subject, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full"
+                className="px-3 py-1 bg-purple-100 text-indigo-700 text-xs rounded-full"
               >
                 {subject}
               </span>
@@ -81,7 +81,7 @@ const BookCard = ({ book }) => {
         </div>
 
         <div className="flex gap-2">
-          <button className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 px-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+          <button className="flex-1 bg-indigo-600 text-white py-2 px-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
             Read Online
           </button>
           <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
@@ -104,7 +104,6 @@ const ResourcesPage = ({ user }) => {
     "javascript",
     "react",
     "node.js",
-    "python",
     "data science",
     "machine learning",
     "ui ux design",
@@ -122,7 +121,7 @@ const ResourcesPage = ({ user }) => {
       );
       const data = await response.json();
 
-      // Filter books to ensure they have relevant content
+      // To filler books to ensure they have relevant content
       const filteredBooks = data.docs.filter(
         (book) => book.title && book.author_name && book.author_name.length > 0
       );
@@ -180,18 +179,18 @@ const ResourcesPage = ({ user }) => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search for books, topics, or authors..."
-                className="w-full py-3 pl-4 pr-12 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full py-3 pl-4 pr-12 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-400 hover:text-purple-600 transition-colors"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-400 hover:text-indigo-600 transition-colors"
               >
                 <LiaSearchSolid className="text-xl" />
               </button>
             </form>
           </div>
 
-          {/* Category Pills */}
+          {/* Category tabs */}
           <div className="mb-8">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
               Browse by Category
@@ -203,7 +202,7 @@ const ResourcesPage = ({ user }) => {
                   onClick={() => handleCategoryClick(category)}
                   className={`px-6 py-2 rounded-full transition-all duration-300 font-medium capitalize ${
                     selectedCategory === category
-                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg"
+                      ? "bg-BrightPurple shadow-lg"
                       : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
                   }`}
                 >
@@ -216,7 +215,7 @@ const ResourcesPage = ({ user }) => {
           {/* Loading State */}
           {loading && (
             <div className="flex justify-center items-center py-12">
-              <LiaSpinnerSolid className="text-4xl text-purple-600 animate-spin" />
+              <LiaSpinnerSolid className="text-4xl text-indigo-600 animate-spin" />
               <span className="ml-3 text-gray-600">Loading books...</span>
             </div>
           )}

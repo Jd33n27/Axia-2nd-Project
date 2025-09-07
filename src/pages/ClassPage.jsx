@@ -11,67 +11,102 @@ const ClassPage = ({ user }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mock enrolled courses
-    const enrolledCourses = [
-      {
-        id: 1,
-        title: "React Fundamentals",
-        instructor: "John Smith",
-        description:
-          "Learn the basics of React including components, state management, and hooks.",
-        level: "Beginner",
-        duration: "8 weeks",
-        enrolled: 1234,
-        rating: 4.8,
-        progress: 75,
-        category: "Frontend",
-      },
-      {
-        id: 2,
-        title: "Node.js Backend Development",
-        instructor: "Sarah Wilson",
-        description:
-          "Build scalable backend applications with Node.js, Express, and MongoDB.",
-        level: "Intermediate",
-        duration: "10 weeks",
-        enrolled: 856,
-        rating: 4.9,
-        progress: 40,
-        category: "Backend",
-      },
-      {
-        id: 3,
-        title: "JavaScript ES6+",
-        instructor: "Mike Johnson",
-        description:
-          "Master modern JavaScript features including arrow functions, destructuring, async/await.",
-        level: "Intermediate",
-        duration: "6 weeks",
-        enrolled: 2156,
-        rating: 4.7,
-        progress: 15,
-        category: "Programming",
-      },
-      {
-        id: 4,
-        title: "UI/UX Design Principles",
-        instructor: "Emily Chen",
-        description:
-          "Learn design thinking, user research, wireframing, and prototyping.",
-        level: "Beginner",
-        duration: "12 weeks",
-        enrolled: 934,
-        rating: 4.6,
-        progress: 25,
-        category: "Design",
-      },
-    ];
+    const fetchCoursesData = async () => {
+      try {
+        // Fetch users from dummyjson for instructors
+        const usersResponse = await fetch(
+          "https://dummyjson.com/users?limit=6"
+        );
+        const usersData = await usersResponse.json();
 
-    setCourses(enrolledCourses);
-    setLoading(false);
+        // Fetch books from openlibrary for courses
+        const booksResponse = await fetch(
+          "https://openlibrary.org/search.json?q=programming&limit=6&fields=key,title,author_name,subject,first_publish_year"
+        );
+        const booksData = await booksResponse.json();
+
+        const categories = [
+          "Frontend",
+          "Backend",
+          "Programming",
+          "Design",
+          "Data Science",
+          "Mobile",
+        ];
+        const levels = ["Beginner", "Intermediate", "Advanced"];
+
+        // Transform API data into course format
+        const enrolledCourses = booksData.docs
+          .slice(0, 6)
+          .map((book, index) => ({
+            id: index + 1,
+            title: book.title || "Programming Course",
+            instructor: usersData.users[index]
+              ? `${usersData.users[index].firstName} ${usersData.users[index].lastName}`
+              : "Unknown Instructor",
+            description: `Learn ${
+              book.title || "programming concepts"
+            } with hands-on projects and real-world examples.`,
+            level: levels[Math.floor(Math.random() * levels.length)],
+            duration: `${Math.floor(Math.random() * 8) + 4} weeks`,
+            enrolled: Math.floor(Math.random() * 2000) + 500,
+            rating: (Math.random() * 1.5 + 3.5).toFixed(1),
+            progress: Math.floor(Math.random() * 80) + 10,
+            category: categories[Math.floor(Math.random() * categories.length)],
+          }));
+
+        setCourses(enrolledCourses);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+
+        // Fallback mock data if API fails
+        const fallbackCourses = [
+          {
+            id: 1,
+            title: "React Fundamentals",
+            instructor: "John Smith",
+            description:
+              "Learn the basics of React including components, state management, and hooks.",
+            level: "Beginner",
+            duration: "8 weeks",
+            enrolled: 1234,
+            rating: 4.8,
+            progress: 75,
+            category: "Frontend",
+          },
+          {
+            id: 2,
+            title: "Node.js Backend Development",
+            instructor: "Sarah Wilson",
+            description:
+              "Build scalable backend applications with Node.js, Express, and MongoDB.",
+            level: "Intermediate",
+            duration: "10 weeks",
+            enrolled: 856,
+            rating: 4.9,
+            progress: 40,
+            category: "Backend",
+          },
+        ];
+
+        setCourses(fallbackCourses);
+        setLoading(false);
+      }
+    };
+
+    fetchCoursesData();
   }, []);
 
-  const categories = ["All", "Frontend", "Backend", "Programming", "Design"];
+  const categories = [
+    "All",
+    "Frontend",
+    "Backend",
+    "Programming",
+    "Design",
+    "Data Science",
+    "Mobile",
+  ];
   const filteredCourses =
     selectedCategory === "All"
       ? courses
@@ -89,7 +124,6 @@ const ClassPage = ({ user }) => {
       <Sidebar />
       <section className="w-full float-right md:w-[80%]">
         <Navbar user={user} />
-        {console.log(user)}
         <div className="p-6">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -106,7 +140,7 @@ const ClassPage = ({ user }) => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
                     selectedCategory === category
-                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg"
+                      ? "bg-indigo-600 text-white shadow-lg"
                       : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
                   }`}
                 >
