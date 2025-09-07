@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Link } from "react";
 import Logo from "../components/Logo";
 import {
   LiaBookSolid,
@@ -15,45 +15,45 @@ const Sidebar = () => {
 
       <div className="flex flex-col px-3">
         <h2 className="text-md text-gray-400 px-3 mb-3">GENERAL</h2>
-        <a
-          href="/dashboard"
+        <Link
+          to="/dashboard"
           className="py-3 md:text-lg hover:bg-gray-50 rounded-lg px-3 transition-colors"
         >
           <LiaBookSolid className="inline-flex size-6 mx-2 items-center" />
           Dashboard
-        </a>
-        <a
-          href="/ClassPage"
+        </Link>
+        <Link
+          to="/ClassPage"
           className="py-3 md:text-lg hover:bg-gray-50 rounded-lg px-3 transition-colors"
         >
           <LiaPencilRulerSolid className="inline-flex size-6 mx-2 items-center" />
           My Classes
-        </a>
-        <a
-          href="/courses"
+        </Link>
+        <Link
+          to="/courses"
           className="py-3 md:text-lg hover:bg-gray-50 rounded-lg px-3 transition-colors"
         >
           <LiaBookSolid className="inline-flex size-6 mx-2 items-center" />
           All Courses
-        </a>
-        <a
-          href="/assignment"
+        </Link>
+        <Link
+          to="/assignment"
           className="py-3 md:text-lg hover:bg-gray-50 rounded-lg px-3 transition-colors"
         >
           <LiaClipboardListSolid className="inline-flex size-6 mx-2 items-center" />
           assignment
-        </a>
+        </Link>
       </div>
 
       <div className="flex flex-col px-3">
         <h2 className="text-md text-gray-400 px-3 mb-3">RESOURCES</h2>
-        <a
-          href="/resources"
+        <Link
+          to="/resources"
           className="py-3 md:text-lg hover:bg-gray-50 rounded-lg px-3 transition-colors"
         >
           <LiaBookSolid className="inline-flex size-6 mx-2 items-center" />
           Library
-        </a>
+        </Link>
       </div>
     </nav>
   );
