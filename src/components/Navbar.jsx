@@ -130,7 +130,7 @@ const Navbar = ({ user }) => {
               assignment
             </Link>
 
-            <div className="flex flex-col px-3">
+            <div className="flex flex-col">
               <h2 className="text-md text-gray-400 px-3 mb-3">RESOURCES</h2>
               <Link to="/resources" className="py-2">
                 <LiaBookSolid className="inline-flex size-7 mx-2 items-center" />

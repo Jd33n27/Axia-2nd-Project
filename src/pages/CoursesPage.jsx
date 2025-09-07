@@ -115,56 +115,91 @@ const CoursesPage = ({ user }) => {
 
   const fetchAPIData = async () => {
     try {
-      // Fetch from FakeStore API
-      // const productsRes = await fetch(
-      //   "https://fakestoreapi.com/products?limit=12"
-      // );
-      // const products = await productsRes.json();
+      // Educational subjects to search for
+      const subjects = [
+        "programming",
+        "computer science",
+        "mathematics",
+        "science",
+        "education",
+        "learning",
+        "technology",
+        "web development",
+        "data science",
+      ];
 
-      // // Transform to course format
-      // const apiCourses = products.map((product) => ({
-      //   id: `course-${product.id}`,
-      //   title: product.title,
-      //   instructor: "Expert Instructor",
-      //   description: product.description,
-      //   level: "Intermediate",
-      //   duration: Math.floor(Math.random() * 20) + 5 + " hours",
-      //   enrolled: Math.floor(Math.random() * 1000) + 100,
-      //   rating: product.rating.rate,
-      //   progress: 0,
-      //   category: product.category,
-      //   price: product.price,
-      //   image: product.image,
-      //   type: "course",
-      // }));
+      // Fetch educational books from OpenLibrary
+      const allBooks = [];
+      const allCourses = [];
 
-      // Fetch from Open Library
-      const booksRes = await fetch(
-        "https://openlibrary.org/subjects/programming.json?limit=8"
-      );
-      const booksData = await booksRes.json();
+      // Get books from multiple educational subjects
+      for (let i = 0; i < 3; i++) {
+        const subject = subjects[i];
+        const booksRes = await fetch(
+          `https://openlibrary.org/subjects/${subject}.json?limit=6`
+        );
+        const booksData = await booksRes.json();
 
-      const apiBooks =
-        booksData.works?.map((book, index) => ({
-          id: `book-${index}`,
-          title: book.title,
-          instructor: "Open Library",
-          description: `Free programming resource: ${book.title}. Learn at your own pace with this comprehensive guide.`,
-          level: "All Levels",
-          duration: "Self-paced",
-          enrolled: "Free Access",
-          rating: 4.2 + Math.random() * 0.8,
-          progress: 0,
-          category: "programming",
-          price: 0,
-          image: book.cover_id
-            ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
-            : null,
-          type: "book",
-        })) || [];
+        if (booksData.works) {
+          const subjectBooks = booksData.works.map((book, index) => ({
+            id: `book-${subject}-${index}`,
+            title: book.title,
+            instructor: book.authors?.[0]?.name || "Open Library",
+            description: `Learn ${subject} with this comprehensive resource. ${book.title} provides in-depth coverage of essential concepts and practical applications.`,
+            level: "All Levels",
+            duration: "Self-paced",
+            enrolled: "Free Access",
+            rating: 4.0 + Math.random() * 1.0,
+            progress: 0,
+            category: subject,
+            price: 0,
+            image: book.cover_id
+              ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
+              : null,
+            type: "book",
+          }));
+          allBooks.push(...subjectBooks);
+        }
+      }
 
-      setCourses(apiCourses);
-      setBooks(apiBooks);
+      // Create course-style content from educational searches
+      const educationalTopics = [
+        { topic: "javascript", price: 49.99 },
+        { topic: "python", price: 59.99 },
+        { topic: "web design", price: 39.99 },
+        { topic: "data analysis", price: 79.99 },
+      ];
+
+      for (const { topic, price } of educationalTopics) {
+        const searchRes = await fetch(
+          `https://openlibrary.org/search.json?q=${topic}&limit=3`
+        );
+        const searchData = await searchRes.json();
+
+        if (searchData.docs) {
+          const topicCourses = searchData.docs.map((doc, index) => ({
+            id: `course-${topic}-${index}`,
+            title: `${doc.title} - Complete Course`,
+            instructor: doc.author_name?.[0] || "Expert Instructor",
+            description: `Master ${topic} with this comprehensive course based on "${doc.title}". Learn practical skills and real-world applications.`,
+            level: "Intermediate",
+            duration: `${Math.floor(Math.random() * 15) + 8} hours`,
+            enrolled: Math.floor(Math.random() * 1000) + 200,
+            rating: 4.2 + Math.random() * 0.8,
+            progress: 0,
+            category: topic,
+            price: price,
+            image: doc.cover_i
+              ? `https://covers.openlibrary.org/b/id/${doc.cover_i}-M.jpg`
+              : null,
+            type: "course",
+          }));
+          allCourses.push(...topicCourses);
+        }
+      }
+
+      setCourses(allCourses);
+      setBooks(allBooks.slice(0, 12)); // Limit to 12 books
       setLoading(false);
     } catch (error) {
       console.error("Error fetching API data:", error);
@@ -191,8 +226,7 @@ const CoursesPage = ({ user }) => {
               Explore Learning Materials
             </h1>
             <p className="text-gray-600">
-              Discover courses from our catalog and free resources from Open
-              Library
+              Discover educational courses and free resources from Open Library
             </p>
           </div>
 
