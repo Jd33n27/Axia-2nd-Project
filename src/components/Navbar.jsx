@@ -120,10 +120,23 @@ const Navbar = ({ user }) => {
               <LiaPencilRulerSolid className="inline-flex size-7 mx-2 items-center" />
               Classes
             </Link>
+
+            <Link to="/courses" className="py-2">
+              <LiaBookSolid className="inline-flex size-7 mx-2 items-centerr" />
+              All Courses
+            </Link>
             <Link to="/assignment" className="py-2">
               <LiaClipboardListSolid className="inline-flex size-7 mx-2 items-center" />{" "}
               assignment
             </Link>
+
+            <div className="flex flex-col px-3">
+              <h2 className="text-md text-gray-400 px-3 mb-3">RESOURCES</h2>
+              <Link to="/resources" className="py-2">
+                <LiaBookSolid className="inline-flex size-7 mx-2 items-center" />
+                Library
+              </Link>
+            </div>
           </nav>
         </div>
       </div>
