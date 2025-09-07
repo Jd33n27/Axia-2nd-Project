@@ -13,6 +13,52 @@ import ProfileWidget from "./ProfileWidget";
 const Navbar = ({ user }) => {
   const [open, setOpen] = useState(false);
 
+  // Profile Dropdown Component
+  const ProfileDropdown = ({ user, isOpen, setIsOpen }) => (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100"
+      >
+        <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+          <LiaUserSolid className="text-white" />
+        </div>
+        <span className="font-medium">{user?.name || "User"}</span>
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-10">
+          <a href="/profile" className="block px-4 py-2 hover:bg-gray-100">
+            <LiaUserSolid className="inline mr-2" />
+            Profile
+          </a>
+          <hr />
+          <button className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">
+            Logout
+          </button>
+        </div>
+      )}
+    </div>
+  );
+
+  // Navbar Component
+  const NavbarDrpDown = ({ user }) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    return (
+      <nav className="bg-white shadow-sm border-b px-6 py-4 flex justify-between items-center">
+        <div>
+          <h1 className="text-xl font-semibold text-gray-900">My Classes</h1>
+        </div>
+        <ProfileDropdown
+          user={user}
+          isOpen={dropdownOpen}
+          setIsOpen={setDropdownOpen}
+        />
+      </nav>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-40 backdrop-blur border-5 border-slate-200/60 bg-white/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,7 +104,7 @@ const Navbar = ({ user }) => {
           {/* Logo */}
           <Logo className="inline-flex m-6" />
           <button
-            className="inline-flex items-center justify-center h-10 w-10 rounded-xl border-slate-200 fixed top-[40%] left-[50%] hover:bg-red-400/70"
+            className="inline-flex items-center justify-center h-10 w-10 rounded-xl border-slate-200 fixed top-[30%] left-[50%] hover:bg-red-400/70"
             onClick={() => setOpen(!open)}
           >
             <IoCloseOutline className="inline-flex size-7" />
@@ -74,9 +120,9 @@ const Navbar = ({ user }) => {
               <LiaPencilRulerSolid className="inline-flex size-7 mx-2 items-center" />
               Classes
             </Link>
-            <Link to="/AssignPAge" className="py-2">
+            <Link to="/assignment" className="py-2">
               <LiaClipboardListSolid className="inline-flex size-7 mx-2 items-center" />{" "}
-              Assignments
+              assignment
             </Link>
           </nav>
         </div>

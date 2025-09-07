@@ -5,7 +5,7 @@ import studentImg from "../assets/images/student.png";
 const ProfileWidget = ({ user, className }) => {
   if (!user) {
     return (
-      <div className={`fixed left-[90%]`}>
+      <div className={`fixed top-5 inline-flex w-full justify-end`}>
         <h1>No user data found</h1>
         <p>Please log in first.</p>
       </div>
@@ -13,9 +13,9 @@ const ProfileWidget = ({ user, className }) => {
   }
 
   return (
-    <Link to="/ProfilePage">
+    <Link to="/Profile">
       <div
-        className={`flex items-center justify-center space-x-3 rounded-xl py-2 px-4 ${className}`}
+        className={`flex items-center text-wrapqe justify-center space-x-3 rounded-xl py-2 px-4 ${className}`}
       >
         {/* Profile image / Icon */}
         <div className="bg-indigo-500 border-2 border-slate-600 shadow-sm p-2 rounded-full">
@@ -27,7 +27,7 @@ const ProfileWidget = ({ user, className }) => {
           />
         </div>
 
-        <article>
+        <article className="hidden md:flex">
           <p>{user.full_name}</p>
         </article>
       </div>

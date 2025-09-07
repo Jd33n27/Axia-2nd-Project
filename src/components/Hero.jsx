@@ -17,7 +17,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg text-slate-600 max-w-pro">
-            React Learn helps you track courses, deadlines, and assignments with
+            React Learn helps you track courses, deadlines, and assignment with
             a calm, distraction-free dashboard. Built for students, creators,
             and teams.
           </p>

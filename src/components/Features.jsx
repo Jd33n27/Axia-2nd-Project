@@ -62,7 +62,7 @@ const Features = () => {
             }
             iconBg="bg-teal-50"
             iconColor="text-teal-600"
-            title="Assignments"
+            title="assignment"
             description="Create, submit, and grade with clear status indicators."
           />
           <FeaturesCard

@@ -17,7 +17,7 @@ const About = () => {
             <p className="text-slate-600">
               We believe education should feel focused and humane. Our platform
               strips away clutter so you can concentrate on the next right
-              step—one course, one assignment, one milestone at a time.
+              step—one course, one assignments, one milestone at a time.
             </p>
             <p className="text-slate-600">
               Designed for speed and clarity, React Learn brings modern SaaS

@@ -6,26 +6,14 @@ import { useState } from "react";
 const LoginPage = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Use ReqRes login API for validation
-    const response = await fetch("https://reqres.in/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": "reqres-free-v1",
-      },
-      body: JSON.stringify({
-        email: email, // ReqRes test email
-        password: password, // ReqRes test password
-      }),
-    });
-
-    if (response.ok) {
-      onLoginSuccess(email, password); // Pass form data to match with stored users
-    }
+    // Call ReqRes for validation (optional)
+    // Then call your success handler with rememberMe flag
+    onLoginSuccess(email, password, rememberMe);
   };
 
   return (
@@ -63,7 +51,12 @@ const LoginPage = ({ onLoginSuccess }) => {
         </label>
         <div className="flex items-center justify-between text-sm">
           <label className="inline-flex items-center gap-2">
-            <input type="checkbox" className="rounded border-slate-300" />
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="rounded border-slate-300"
+            />
             <span>Remember me</span>
           </label>
           <Link to="#" className="text-indigo-600 hover:underline">
