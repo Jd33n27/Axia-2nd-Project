@@ -9,7 +9,7 @@ const Logo = ({ className }) => {
       className={`flex items-center gap-2 font-semibold ${className}`}
     >
       <span className="inline-flex items-center justify-center rounded-xl">
-        <img src={Rlogo} alt="" className="h-30 w-full mx-auto" />
+        <img src={Rlogo} alt="" className="h-30 mx-auto" />
       </span>
     </Link>
   );

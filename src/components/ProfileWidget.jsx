@@ -21,17 +21,17 @@ const ProfileWidget = ({ user, className }) => {
       {/* Profile button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center space-x-3 rounded-xl py-2 px-4"
+        className="flex items-center justify-center space-x-1 rounded-xl py-2 px-4"
       >
         <div className="bg-indigo-500 border-2 border-slate-600 shadow-sm p-2 rounded-full">
           <img
             src={studentImg}
             alt="Profile icon"
             loading="lazy"
-            className="size-8"
+            className="size-4 md:size-8"
           />
         </div>
-        <article className="inline-flex items-center gap-1 justify-center">
+        <article className="inline-flex items-center text-xs justify-center">
           <p>{user.full_name}</p>
           <IoChevronDown
             className={`transition-transform duration-200 ${
