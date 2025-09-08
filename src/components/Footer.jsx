@@ -7,15 +7,15 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-evenly gap-6 md:flex-row">
           <div className="flex flex-col max-w-xs">
-            <Logo />
-            <div className="flex flex-col space-y-3 my-2">
-              <p className="flex items-center gap-6 text-slate-600 md:text-wrap">
+            <Logo className={"sm:mx-auto md:m-0"} />
+            <div className="flex flex-col space-y-2 my-2">
+              <p className="flex items-center sm:text-center md:text-start gap-6 text-slate-600 md:text-wrap">
                 A firm that is concentrated on equipping African youths with the
                 knowledge and skills needed to excel in the tech space.
               </p>
 
               {/* <!-- Socials --> */}
-              <div className="flex items-center gap-3 w-45">
+              <div className="flex items-center sm:text-center gap-3 w-45 sm:mx-auto md:text-start">
                 <a
                   href="#"
                   aria-label="Twitter"
@@ -60,14 +60,14 @@ const Footer = () => {
                 </a>
               </div>
 
-              <p className="flex items-center gap-6 text-slate-600 text-wrap">
+              <p className="flex items-center sm:text-center sm:mx-auto gap-6 text-slate-600 text-wrap md:text-start">
                 &copy; 2025 React Learn. All rights reserved
               </p>
             </div>
           </div>
 
           {/* Contact Company */}
-          <nav className="flex flex-col text-start gap-1 text-sm text-slate-600">
+          <nav className="flex flex-col sm:text-center gap-1 text-sm text-slate-600 md:text-start">
             <h2 className="font-bold text-xl"> Company</h2>
             <a href="#about" className="hover:text-indigo-700">
               About
@@ -81,7 +81,7 @@ const Footer = () => {
           </nav>
 
           {/* Contact Support */}
-          <nav className="flex flex-col text-start gap-1 text-sm text-slate-600">
+          <nav className="flex flex-col sm:text-center gap-1 text-sm text-slate-600 md:text-start">
             <h2 className="font-bold text-xl"> Support</h2>
             <a href="#" className="hover:text-indigo-700">
               info@react.learn
