@@ -11,11 +11,11 @@ const AuthForm = ({
   authCheckLinkPath = "/",
 }) => {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-linear-to-br from-red-400 to-indigo-500">
       <div className="max-w-md mx-auto px-4 py-12">
-        <Logo />
+        <Logo className={"mx-auto w-50"} />
 
-        <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm mt-5">
+        <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
           <h1 className="text-xl font-semibold">{formTitle}</h1>
           <p className="text-sm text-slate-600 mt-1">{formWelcomeText}</p>
 

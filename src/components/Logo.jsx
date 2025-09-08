@@ -4,11 +4,8 @@ import Rlogo from "../assets/images/R_logo.png";
 
 const Logo = ({ className }) => {
   return (
-    <Link
-      to="/"
-      className={`flex items-center gap-2 font-semibold ${className}`}
-    >
-      <span className="inline-flex items-center justify-center rounded-xl">
+    <Link to="/" className={`flex items-start ${className}`}>
+      <span>
         <img src={Rlogo} alt="" className="h-30 mx-auto" />
       </span>
     </Link>

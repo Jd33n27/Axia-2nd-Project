@@ -31,7 +31,7 @@ const ProfileWidget = ({ user, className }) => {
             className="size-4 md:size-8"
           />
         </div>
-        <article className="inline-flex items-center text-xs justify-center">
+        <article className="inline-flex items-center text-xs md:text-sm lg:text-xl justify-center">
           <p>{user.full_name}</p>
           <IoChevronDown
             className={`transition-transform duration-200 ${

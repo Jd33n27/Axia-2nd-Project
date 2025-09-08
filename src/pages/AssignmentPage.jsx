@@ -49,7 +49,7 @@ const AssignmentsCard = ({ assignments }) => {
     assignments.status === "pending";
 
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow p-6 border-l-4 border-purple-500">
+    <div className="bg-white w-90 rounded-lg shadow hover:shadow-lg transition-shadow p-6 border-x-4 border-slate-500/70 md:w-5xl">
       {/* Header */}
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
@@ -86,12 +86,9 @@ const AssignmentsCard = ({ assignments }) => {
       <p className="text-gray-600 text-sm mb-4">{assignments.description}</p>
 
       {/* Actions */}
-      <div className="flex justify-end gap-3">
-        <button className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800">
-          <LiaEyeSolid className="w-4 h-4" /> View
-        </button>
-        <button className="flex items-center gap-1 text-sm text-green-600 hover:text-green-800">
-          <LiaDownloadSolid className="w-4 h-4" /> Download
+      <div className="inline-flex justify-end">
+        <button className="flex items-center gap-1 text-sm text-white bg-blue-600/70 px-4 py-2 rounded-xl hover:text-blue-800">
+          View
         </button>
       </div>
     </div>
@@ -105,7 +102,11 @@ const AssignmentPage = ({ user, assignments = [] }) => {
       <Sidebar />
       <div className="md:float-right md:w-[80%]">
         <Navbar user={user} />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mx-10">
+          <h2 className="md:text-2xl font-bold">My Assignments</h2>
+          <p className="md:text-xl">View your assignments details here</p>
+        </div>
+        <div className="grid grid-cols-1 place-items-center gap-6 mt-10 md:h-200 md:w-6xl md:mx-10 md:overflow-y-scroll">
           {assignments.map((a) => (
             <AssignmentsCard key={a.id} assignments={a} />
           ))}
