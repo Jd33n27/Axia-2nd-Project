@@ -22,66 +22,21 @@ const Features = () => {
         {/* <!-- Features-card --> */}
         <div className="grid sm:grid-cols-2 gap-6 lg:place-items-center lg:grid-cols-2 lg:gap-y-10">
           <FeaturesCard
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M3 5h12M9 3v2m-6 4h18M3 9v12h18V9"
-                />
-              </svg>
-            }
+            icon="1"
             iconBg="bg-indigo-50"
             iconColor="text-indigo-600"
             title="Course Planner"
             description="Organize modules, track prerequisites, and map your learning path."
           />
           <FeaturesCard
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M12 8v8m4-4H8m12 0A8 8 0 114 12a8 8 0 0116 0z"
-                />
-              </svg>
-            }
+            icon="2"
             iconBg="bg-teal-50"
             iconColor="text-teal-600"
             title="assignment"
             description="Create, submit, and grade with clear status indicators."
           />
           <FeaturesCard
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M3 12h18M3 6h18M3 18h18"
-                />
-              </svg>
-            }
+            icon="3"
             iconBg="bg-purple-50"
             iconColor="text-purple-600"
             title="Progress"
@@ -89,22 +44,7 @@ const Features = () => {
           />
 
           <FeaturesCard
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-            }
+            icon="4"
             iconBg="bg-blue-50"
             title="Integrations"
             description="Connect calendars, storage, and

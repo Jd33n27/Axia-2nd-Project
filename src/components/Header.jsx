@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     // <!-- Header / Nav -->
-    <header className="sticky top-0 z-40 backdrop-blur border-5 border-slate-200/60 bg-white/70">
+    <header className="sticky top-0 z-40 backdrop-blur border-5 border-slate-200/60 bg-indigo-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* <!-- Logo --> */}
@@ -29,19 +29,19 @@ const Header = () => {
           {/* <!-- Actions --> */}
           <div className="hidden items-center gap-3 md:flex">
             {/* <!-- Login Button --> */}
-            <Link
+            {/* <Link
               to="/Login"
               className="text-sm font-medium hover:text-indigo-600 md:text-xl"
             >
               Login
-            </Link>
+            </Link> */}
 
             {/* <!-- Sign up Button --> */}
             <Link
               to="/Signup"
-              className="inline-flex items-center justify-center text-sm font-medium rounded-xl px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-800 md:text-xl"
+              className="inline-flex items-center justify-center text-sm font-bold rounded-xl px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-800 md:text-xl"
             >
-              Sign Up
+              Apply Now
             </Link>
           </div>
 

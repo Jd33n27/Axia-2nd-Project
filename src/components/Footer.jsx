@@ -3,13 +3,13 @@ import Logo from "./Logo";
 
 const Footer = () => {
   return (
-    <section className="border-t border-slate-200 bg-indigo-300 rounded-2xl mb-10 container mx-auto">
+    <section className="border-t border-slate-200 bg-red-200 rounded-2xl mb-10 container mx-auto">
       <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-start justify-evenly gap-6 md:flex-row md:items-center">
+        <div className="flex flex-col items-center justify-evenly gap-6 md:flex-row">
           <div className="flex flex-col max-w-xs">
             <Logo />
             <div className="flex flex-col space-y-3 my-2">
-              <p className="flex items-center gap-6 text-slate-600 text-wrap">
+              <p className="flex items-center gap-6 text-slate-600 md:text-wrap">
                 A firm that is concentrated on equipping African youths with the
                 knowledge and skills needed to excel in the tech space.
               </p>

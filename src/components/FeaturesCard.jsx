@@ -11,7 +11,7 @@ const FeaturesCard = ({
   return (
     <Card className="md:w-70 md:h-50">
       <div
-        className={`rounded-xl size-10 grid place-items-center ${iconBg} ${iconColor}`}
+        className={`rounded-xl size-10 grid place-items-center font-bold text-2xl ${iconBg} ${iconColor}`}
       >
         {icon}
       </div>

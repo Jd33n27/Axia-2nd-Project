@@ -29,7 +29,7 @@ const Hero = () => {
               to="/signup"
               className="bg-purple inline-flex items-center justify-center rounded-xl px-4 py-3 text-white text-xl font-medium hover:bg-indigo-800"
             >
-              Get Started
+              Enroll Now
             </Link>
 
             {/* <!-- Features --> */}
