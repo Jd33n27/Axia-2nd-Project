@@ -24,7 +24,7 @@ const DashboardPage = ({ user, assignments = [] }) => {
   ).length;
   const totalAssignments = assignments.length;
 
-  // Mock progress data - replace with actual user data
+  // Mock progress data
   const progressData = {
     enrolledCourses: { completed: 6, total: 10 },
     overallGrade: { completed: 550, total: 800 },

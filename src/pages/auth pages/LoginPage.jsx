@@ -11,8 +11,6 @@ const LoginPage = ({ onLoginSuccess }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Call ReqRes for validation (optional)
-    // Then call your success handler with rememberMe flag
     onLoginSuccess(email, password, rememberMe);
   };
 

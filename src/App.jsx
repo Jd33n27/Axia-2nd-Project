@@ -38,6 +38,8 @@ const AppContent = () => {
 
     fetchAssignments();
   }, []);
+
+
   // Load users from localStorage on app start
   const [users, setUsers] = useState(() => {
     const savedUsers = localStorage.getItem("allUsers");
@@ -55,7 +57,8 @@ const AppContent = () => {
   const handleSignUpSuccess = (userData) => {
     const newUsers = [...users, userData];
     setUsers(newUsers);
-    localStorage.setItem("allUsers", JSON.stringify(newUsers)); // Save to localStorage
+    // Saving to localStorage
+    localStorage.setItem("allUsers", JSON.stringify(newUsers)); 
     navigate("/login");
   };
 

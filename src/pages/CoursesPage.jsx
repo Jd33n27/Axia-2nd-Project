@@ -133,7 +133,7 @@ const CoursesPage = ({ user }) => {
             </p>
           </div>
 
-          {/* count Tabs */}
+          {/* count Tab */}
           <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg mb-8 w-fit">
             <button className="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-BrightPurple text-gray-600 hover:text-gray-900">
               All Content ({allContent.length})

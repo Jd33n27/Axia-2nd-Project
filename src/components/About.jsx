@@ -11,9 +11,11 @@ const About = () => {
       <div className="max-w-5xl mx-auto px-6 md:px-8">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="space-y-4">
+
             <h2 className="text-2xl sm:text-3xl font-semibold">
               About React Learn
             </h2>
+            
             <p className="text-slate-600">
               We believe education should feel focused and humane. Our platform
               strips away clutter so you can concentrate on the next right
